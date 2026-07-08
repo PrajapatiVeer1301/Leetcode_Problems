@@ -1,0 +1,66 @@
+# Logic:
+#
+# 1. If the current node is None,
+#    return None.
+#
+# 2. If the current node value equals val,
+#    return the current node.
+#
+# 3. If val is smaller than the current node,
+#    search in the left subtree.
+#
+# 4. Otherwise,
+#    search in the right subtree.
+
+# Algorithm:
+#
+# 1. Start from the root.
+#
+# 2. If root is None, return None.
+#
+# 3. If root.val == val, return root.
+#
+# 4. If val < root.val,
+#    recursively search the left subtree.
+#
+# 5. Otherwise,
+#    recursively search the right subtree.
+#
+# 6. Return the result.
+
+class Solution:
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+
+        if root is None:
+            return None
+
+        if root.val == val:
+            return root
+
+        if val < root.val:
+            return self.searchBST(root.left, val)
+
+        return self.searchBST(root.right, val)
+    
+
+# Interview Explanation:
+#
+# 1. Since it is a Binary Search Tree,
+#    I compare the target value with the current node.
+#
+# 2. If the value matches,
+#    I return the current node.
+#
+# 3. If the target value is smaller,
+#    I search the left subtree.
+#
+# 4. Otherwise,
+#    I search the right subtree.
+#
+# 5. This reduces unnecessary searching because
+#    BST properties allow us to ignore half of the tree.
+#
+# Time Complexity: O(h)
+# Space Complexity: O(h)
+#
+# where h is the height of the tree.
